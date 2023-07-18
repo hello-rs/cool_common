@@ -14,7 +14,7 @@ serde = { version = "1" }
 lazy_static = "1"
 
 # 日志输出
-tracing = { git = "https://github.com/tokio-rs/tracing", version = "0.2" }
+tracing = { version = "0.1" }
 # 日志收集器,收集后输出到控制台、文件中等
 tracing-subscriber = { version = "0.3", features = ["json", "env-filter"] }
 # 日志文件输出,支持非阻塞写入日志
