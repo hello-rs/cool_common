@@ -1,5 +1,5 @@
 # The Rust Cool common lib.
 
-## Feature
+## todo
 
-- list [List<T>]()
+study list https://course.rs/too-many-lists/intro.html

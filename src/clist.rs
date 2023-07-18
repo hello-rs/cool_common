@@ -5,7 +5,7 @@ use std::fmt::Debug;
 
 /// contain any T for list.
 #[derive(Debug)]
-enum List<T> {
+pub enum List<T> {
     /// Cons：元组结构体，包含链表的一个元素和一个指向下一节点的指针
     Cons(T, Box<List<T>>),
     /// Nil：末结点，表明链表结束
@@ -14,17 +14,17 @@ enum List<T> {
 
 impl<T: Debug> List<T> {
     // 创建一个空的 List 实例
-    fn new() -> Self {
+    pub fn new() -> Self {
         List::Nil
     }
 
     /// 在其头部插入新元素，并返回该 List
-    fn prepend(self, elem: T) -> List<T> {
+    pub fn prepend(self, elem: T) -> List<T> {
         List::Cons(elem, Box::new(self))
     }
 
     /// 在其尾部插入新元素，并返回该 List
-    fn append(self, elem: T) -> List<T> {
+    pub fn append(self, elem: T) -> List<T> {
         match self {
             List::Cons(_, _) => List::Cons(elem, Box::new(self)),
             List::Nil => self.prepend(elem),
@@ -32,7 +32,7 @@ impl<T: Debug> List<T> {
     }
 
     // 返回 List 的长度
-    fn len(&self) -> u32 {
+    pub fn len(&self) -> u32 {
         // 取出 List 的值,根据值类型做出不同的处理
         match *self {
             // 不能得到 tail 的所有权，因为 `self` 是借用的；
@@ -44,7 +44,7 @@ impl<T: Debug> List<T> {
     }
 
     // 返回列表的字符串表示（该字符串是堆分配的）
-    fn stringify(&self) -> String {
+    pub fn stringify(&self) -> String {
         match *self {
             List::Cons(ref head, ref tail) => format!("{:?},{}", *head, tail.stringify()),
             List::Nil => format!("Nil"),
