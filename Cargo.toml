@@ -19,3 +19,7 @@ tracing = { version = "0.1" }
 tracing-subscriber = { version = "0.3", features = ["json", "env-filter"] }
 # 日志文件输出,支持非阻塞写入日志
 tracing-appender = { version = "0.2" }
+# result
+anyhow = "1"
+# 编码/解码
+encoding = "0.2"

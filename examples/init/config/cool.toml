@@ -1,0 +1,5 @@
+[tracing]
+level = "info"
+dir = "log"
+name = "cool.log"
+console = true
