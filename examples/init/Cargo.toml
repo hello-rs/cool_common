@@ -6,6 +6,6 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-cool = { path = "../../" }
+cool_common = { path = "../../" }
 
 tracing = { version = "0.1" }

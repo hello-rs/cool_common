@@ -3,8 +3,10 @@ use serde::Deserialize;
 
 lazy_static::lazy_static! {
   #[derive(Debug)]
-  pub static ref C_CONFIG: AppConfig ={
-    let c= Config::builder().add_source(File::with_name("config/cool")).build().unwrap();
+  pub static ref C_CONFIG: AppConfig = {
+    let c = Config::builder()
+      .add_source(File::with_name("config/cool_common"))
+      .build().unwrap();
     c.try_deserialize().unwrap()
   };
 }

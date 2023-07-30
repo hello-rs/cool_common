@@ -1,4 +1,4 @@
-# The Rust Cool common lib.
+# The Rust cool_common lib.
 
 ## todo
 

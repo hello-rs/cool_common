@@ -1,13 +1,13 @@
 use tracing::info;
 
 fn main() {
-    // init cool lib
-    cool::init();
-    if cool::C_CONFIG.tracing.console {
+    // init cool_common lib
+    cool_common::init();
+    if cool_common::C_CONFIG.tracing.console {
         println!("info in console")
     }
-    info!("print config {:?}", *cool::C_CONFIG);
+    info!("print config {:?}", *cool_common::C_CONFIG);
 
-    let res = cool::command("./", "cargo", vec!["--version"]).unwrap();
+    let res = cool_common::command("./", "cargo", vec!["--version"]).unwrap();
     info!("{:?}", res);
 }

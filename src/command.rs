@@ -21,7 +21,7 @@ pub fn command_no_dir(program: &str, args: Vec<&str>) -> Result<CommandResult> {
 /// ```
 /// use tracing::info;
 ///
-/// let res = cool::command("./", "cargo", vec!["--version"]).unwrap();
+/// let res = cool_common::command("./", "cargo", vec!["--version"]).unwrap();
 /// info!("{:?}", res);
 /// ```
 pub fn command(exec_dir: &str, program: &str, args: Vec<&str>) -> Result<CommandResult> {

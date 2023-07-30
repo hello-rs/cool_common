@@ -1,5 +1,5 @@
 [package]
-name = "cool"
+name = "cool_common"
 description = "Cool common lib."
 version = "0.1.0"
 edition = "2021"
