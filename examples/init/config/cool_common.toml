@@ -2,4 +2,4 @@
 level = "info"
 dir = "log"
 name = "cool_common.log"
-console = true
+console = false

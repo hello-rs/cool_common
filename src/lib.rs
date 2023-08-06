@@ -9,5 +9,5 @@ pub mod clist;
 pub mod ctracing;
 
 pub fn init() {
-    ctracing::init();
+    ctracing::init_by_config();
 }
