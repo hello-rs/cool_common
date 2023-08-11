@@ -3,8 +3,8 @@
 
 pub mod command;
 pub use command::*;
-pub mod config;
-pub use config::*;
+pub mod cconfig;
+pub use cconfig::*;
 pub mod clist;
 pub mod ctracing;
 
