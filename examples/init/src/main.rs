@@ -10,4 +10,5 @@ fn main() {
 
     let res = cool_common::command("./", "cargo", vec!["--version"]).unwrap();
     info!("{:?}", res);
+    panic!("end");
 }

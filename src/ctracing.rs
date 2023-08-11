@@ -1,3 +1,4 @@
+use core::panic;
 use std::io;
 use tracing::info;
 use tracing_appender::{non_blocking, rolling};
@@ -21,7 +22,8 @@ pub fn init(dir: &str, file_name: &str, level: &str, is_console: bool) {
     // 创建一个非阻塞的线程外的日志写入者。
     // _guard 守卫 non_blocking_appender 日志写入者
     // 当被 drop 时,剩余的日志将被 flushed
-    let (non_blocking_appender, _guard) = non_blocking(file_appender);
+    // 此方法结束时,会 drop _guard 不再往文件内写内容.
+    // let (non_blocking_appender, _guard) = non_blocking(file_appender);
 
     // 通过配置中的日志级别初始化
     let env = EnvFilter::try_new(level).unwrap();
@@ -29,7 +31,7 @@ pub fn init(dir: &str, file_name: &str, level: &str, is_console: bool) {
     let file_layer = fmt::layer()
         .pretty()
         .with_ansi(false)
-        .with_writer(non_blocking_appender);
+        .with_writer(file_appender);
 
     if is_console {
         // 输入到控制台中
@@ -43,6 +45,12 @@ pub fn init(dir: &str, file_name: &str, level: &str, is_console: bool) {
     } else {
         Registry::default().with(env).with(file_layer).init();
     }
+    color_eyre::install().unwrap();
+    let prev_hook = std::panic::take_hook();
+    std::panic::set_hook(Box::new(move |panic_info| {
+        tracing_panic::panic_hook(panic_info);
+        prev_hook(panic_info);
+    }));
     info!("init tracing success.")
 }
 
