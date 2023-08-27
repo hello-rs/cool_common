@@ -19,7 +19,7 @@ tracing = { version = "0.1" }
 tracing-subscriber = { version = "0.3", features = ["json", "env-filter"] }
 # 日志文件输出,支持非阻塞写入日志
 tracing-appender = { version = "0.2" }
-tracing-panic = "0.1"
+tracing-panic = { version = "0.1" }
 color-eyre = "0.6"
 
 # result

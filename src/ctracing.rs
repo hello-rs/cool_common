@@ -1,3 +1,4 @@
+use core::panic;
 use std::io;
 use tracing::info;
 use tracing_appender::rolling;
@@ -21,7 +22,7 @@ pub fn init(dir: &str, file_name: &str, level: &str, is_console: bool) {
     // 创建一个非阻塞的线程外的日志写入者。
     // _guard 守卫 non_blocking_appender 日志写入者
     // 当被 drop 时,剩余的日志将被 flushed
-    // 此方法结束时,不再往文件内写内容了,先禁用掉.
+    // 此方法结束时,会 drop _guard 不再往文件内写内容.
     // let (non_blocking_appender, _guard) = non_blocking(file_appender);
 
     // 通过配置中的日志级别初始化
@@ -45,7 +46,6 @@ pub fn init(dir: &str, file_name: &str, level: &str, is_console: bool) {
         Registry::default().with(env).with(file_layer).init();
     }
     color_eyre::install().unwrap();
-
     let prev_hook = std::panic::take_hook();
     std::panic::set_hook(Box::new(move |panic_info| {
         tracing_panic::panic_hook(panic_info);
