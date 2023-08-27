@@ -4,4 +4,4 @@ args = ["publish", "--dry-run", "--registry", "crates-io"]
 
 [tasks.publish]
 command = "cargo"
-args = ["publish"]
+args = ["publish", "--registry", "crates-io"]
