@@ -26,3 +26,7 @@ color-eyre = "0.6"
 anyhow = "1"
 # 编码/解码
 encoding = "0.2"
+# 时间
+chrono = "0.4.26"
+# 随机数
+rand = "0.8"
