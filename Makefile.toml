@@ -1,0 +1,7 @@
+[tasks.publish-dry]
+command = "cargo"
+args = ["publish", "--dry-run", "--registry", "crates-io"]
+
+[tasks.publish]
+command = "cargo"
+args = ["publish"]

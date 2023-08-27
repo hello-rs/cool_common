@@ -1,4 +1,3 @@
-use core::panic;
 use std::io;
 use tracing::info;
 use tracing_appender::rolling;
